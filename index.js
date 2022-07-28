@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
 
+app.use(express.static("public")) // for serving static files from public folder
+// http://localhost:3000/index.html directly use it to acces public static files
+
+
 // we use express.Router() to scale our api. It is like blueprint in flask
 
 
@@ -9,8 +13,6 @@ app.set('view engine','ejs')
 
 // using middleware for a single route
 app.get("/",logger,(req,res)=>res.render("index",{text:"heloow"}))
-
-
 
 // custom middleware
 function logger(req,res,next){
