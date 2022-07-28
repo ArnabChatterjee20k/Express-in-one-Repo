@@ -1,24 +1,15 @@
 const express = require('express')
 const app = express()
 
+// we use express.Router() to scale our api. It is like blueprint in flask
+
+
 // setting view engine
 app.set('view engine','ejs')
 
-// app.get("/",async(req,res,next)=>res.send("hellow"))
+// Linking router
+const userRouter = require("./routes/users")
+app.use("/users",userRouter) // /user is prefix . it will attach /users to every routes of user router
+/** It means attach all the routes of userRouter to the end of /users */
 
-// routes
-app.get("/",async(req,res)=>{
-    console.log("Request at /")
-    // res.sendStatus(200)
-    // res.status(200).send("daat")
-    res.status(200).json({message:"200"})
-})
-
-// sending file
-app.get("/file",async(req,res)=>res.download("package.json"))
-
-// rendering html file(we need view engine and by default the directory of files is views)
-app.get("/home",(req,res)=>res.render("index",{text:"world"}))
-
-app.get("/")
 app.listen(3000)
