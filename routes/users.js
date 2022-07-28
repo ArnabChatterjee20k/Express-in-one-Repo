@@ -1,3 +1,5 @@
+// use app.use(express.json()); for getting data from body.
+
 const express = require('express')
 // Router is like creating an instance of express app
 
