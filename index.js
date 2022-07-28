@@ -1,15 +1,14 @@
 const express = require('express')
 const app = express()
-app.use(logger) // using custom logger
-// app.use(logger) is in top every route will be using it.
-// If we define it after get('/') route it will not work for that route
 
 // we use express.Router() to scale our api. It is like blueprint in flask
 
 
 // setting view engine
 app.set('view engine','ejs')
-app.get("/",(req,res)=>res.render("index",{text:"heloow"}))
+
+// using middleware for a single route
+app.get("/",logger,(req,res)=>res.render("index",{text:"heloow"}))
 
 
 
