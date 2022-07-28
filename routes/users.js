@@ -3,6 +3,14 @@ const express = require('express')
 
 const router = express.Router()
 
+// making a common function to run whenever we get id in url in any route
+// it is a middleware(stuff that runs between request sent to server and actual response returned to user)
+router.param((req,res,next,id)=>{
+    console.log(id)
+    next() //running next function
+}) 
+
+
 router.get("/",(req,res)=>res.send("user list"))
 
 router.get("/new",(req,res)=>res.send("user form"))
